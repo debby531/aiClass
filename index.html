@@ -6,6 +6,12 @@
   <meta name="theme-color" content="#38271f" />
   <meta name="description" content="煎好 GOOD CRISP｜金黃酥脆，讓每一口都剛剛好。探索手作鍋貼、水餃與冷凍禮盒。" />
   <title>煎好 GOOD CRISP｜手作鍋貼專賣</title>
+  <link rel="manifest" href="manifest.json" />
+  <link rel="icon" href="icons/icon-192.png" />
+  <link rel="apple-touch-icon" href="icons/icon-192.png" />
+  <meta name="apple-mobile-web-app-capable" content="yes" />
+  <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />
+  <meta name="apple-mobile-web-app-title" content="煎好" />
   <script src="https://cdn.tailwindcss.com"></script>
   <script src="https://unpkg.com/lucide@latest/dist/umd/lucide.min.js" defer></script>
   <link rel="preconnect" href="https://fonts.googleapis.com" />
@@ -241,6 +247,7 @@
     $('#mobileToggle').addEventListener('click',()=>{const menu=$('#mobileMenu');menu.classList.toggle('open');$('#mobileToggle').setAttribute('aria-expanded',String(menu.classList.contains('open')));});
     $$('#mobileMenu a').forEach(a=>a.addEventListener('click',()=>{$('#mobileMenu').classList.remove('open');$('#mobileToggle').setAttribute('aria-expanded','false');}));
     renderMenu();renderCart();renderLocations();renderFAQs();icons();
+    if ('serviceWorker' in navigator) { window.addEventListener('load', () => { navigator.serviceWorker.register('sw.js').catch(() => {}); }); }
   </script>
 </body>
 </html>
