@@ -213,7 +213,7 @@
     let cart={};let category='potsticker', toastTimer, cartOpener=null, modalOpener=null;
     try { const saved=JSON.parse(localStorage.getItem('goodcrisp-cart')||'{}'); if(saved&&typeof saved==='object'&&!Array.isArray(saved)){for(const [id,qty] of Object.entries(saved)){if(products.some(p=>p.id===id)&&Number.isInteger(qty)&&qty>0&&qty<=99)cart[id]=qty;}} } catch(e){cart={};}
     // 把下面兩個值換成你自己的 Google Apps Script 網頁應用程式網址／密鑰，即可把訂單寫入 Google Sheet；留空則維持原本的展示模式。
-    const ORDER_ENDPOINT = '';
+    const ORDER_ENDPOINT = 'https://script.google.com/macros/s/AKfycbwte5ddvlke5czTtYiDgjiDdcBL1qGBYpHCrl3O9TBVh7sd0NKxz1-T1jH_9SNtjBMzHg/exec';
     const ORDER_SECRET = '';
     const LIVE_ORDER = !!ORDER_ENDPOINT;
     const FULFILLMENT_HINTS = LIVE_ORDER
