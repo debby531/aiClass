@@ -39,8 +39,22 @@
     .subtle-grid{background-image:radial-gradient(#ce713d20 1px,transparent 1px);background-size:22px 22px}
     .mapbox{position:relative;min-height:335px;overflow:hidden;border-radius:20px;background:#eee9dd}.mapbox iframe{width:100%;height:335px;border:0;filter:saturate(.7)}
     .no-scroll{overflow:hidden} :focus-visible{outline:3px solid #ce713d99;outline-offset:3px}
-    @media(max-width:767px){.container-xl{padding-inline:20px}.hero{min-height:630px}.hero::before{background:linear-gradient(90deg,#1d140fd9,#1d140f80)}.product-image{height:195px}.modal{padding:21px}.mapbox,.mapbox iframe{min-height:280px;height:280px}}
-    @media(prefers-reduced-motion:reduce){html{scroll-behavior:auto}*,*::before,*::after{transition-duration:.01ms!important;animation-duration:.01ms!important}}
+    .crowd-strip{position:relative;overflow:hidden;height:150px;background:linear-gradient(180deg,#f6efe6 0%,#ecdfcd 100%)}
+    .crowd-strip::after{content:'';position:absolute;left:0;right:0;bottom:36px;height:1px;background:#d8c7ae}
+    .crowd-walkers{position:absolute;inset:0;overflow:hidden}
+    .crowd-caption{position:relative;z-index:2;padding-top:22px;text-align:center}
+    .crowd-badge{display:inline-block;background:#faf6f0e0;backdrop-filter:blur(3px);border-radius:18px;padding:12px 26px;box-shadow:0 6px 18px #38271f14}
+    .walker{position:absolute;bottom:8px;width:24px;animation:walk-right linear infinite;animation-duration:var(--dur,16s);animation-delay:var(--delay,0s)}
+    .walker.dir-left{animation-name:walk-left}
+    .walker.dir-left .figure{transform:scaleX(-1)}
+    .walker .figure{display:block;fill:var(--brown);animation:bob .55s ease-in-out infinite}
+    .walker.layer-back{bottom:52px;opacity:.38;transform:scale(.68)}
+    .walker.layer-front{opacity:.72}
+    @keyframes walk-right{from{left:-6%}to{left:106%}}
+    @keyframes walk-left{from{left:106%}to{left:-6%}}
+    @keyframes bob{0%,50%,100%{transform:translateY(0)}25%,75%{transform:translateY(-3px)}}
+    @media(max-width:767px){.container-xl{padding-inline:20px}.hero{min-height:630px}.hero::before{background:linear-gradient(90deg,#1d140fd9,#1d140f80)}.product-image{height:195px}.modal{padding:21px}.mapbox,.mapbox iframe{min-height:280px;height:280px}.walker.layer-back{display:none}}
+    @media(prefers-reduced-motion:reduce){html{scroll-behavior:auto}*,*::before,*::after{transition-duration:.01ms!important;animation-duration:.01ms!important}.crowd-walkers{display:none}}
     .booking-float{position:fixed;right:max(20px,env(safe-area-inset-right));bottom:calc(20px + env(safe-area-inset-bottom));z-index:55;display:inline-flex;align-items:center;gap:9px;background:var(--orange);color:white;border:1px solid #ffffff55;border-radius:999px;padding:15px 22px;font-weight:700;text-decoration:none;box-shadow:0 6px 24px #38271f33;transition:background .2s,transform .2s}
     .booking-float:hover{background:var(--orange-dark);transform:translateY(-3px)}
     .booking-float svg{width:22px;height:22px;flex-shrink:0}
@@ -62,6 +76,22 @@
     <section class="hero text-white"><img class="hero-bg" src="https://i.postimg.cc/j2YmMLV1/Chat-GPT-Image-2026nian8yue9ri-xia-wu06-20-57.png" alt="新鮮煎製的手作餃子" fetchpriority="high" />
       <div class="container-xl relative w-full py-24"><div class="max-w-[680px]"><p class="text-[#efac7d] text-xs tracking-[.34em] font-bold mb-7">THE ART OF GOLDEN CRISP</p><h1 class="serif font-bold leading-[1.35] text-[clamp(42px,6vw,76px)] tracking-[.035em]">一口金黃，<br /><span class="text-[#f3b280]">剛剛好的幸福。</span></h1><p class="text-white/85 leading-8 mt-7 text-base sm:text-lg max-w-[490px]">從餡料、摺紋到鍋底的酥脆聲響，<br class="hidden sm:block" />我們用一份對手藝的堅持，做好每一顆鍋貼。</p><div class="flex flex-wrap gap-3 mt-9"><a href="#menu" class="btn-primary inline-flex items-center gap-2">線上點餐<i data-lucide="arrow-right" class="w-4 h-4"></i></a><a href="#locations" class="rounded-full border border-white/60 px-6 py-3 font-semibold hover:bg-white/15 transition">探索門市</a></div><div class="mt-16 flex items-center gap-4"><span class="glass-badge">每日手作 · 現點現煎</span><span class="text-white/70 text-xs">SINCE 1996 · TAIWAN</span></div></div></div>
       <div class="absolute right-5 bottom-7 hidden lg:flex items-center gap-2 text-white/70 text-xs tracking-widest"><span class="h-px w-12 bg-white/60"></span> SCROLL TO EXPLORE</div>
+    </section>
+    <!-- Foot traffic animation -->
+    <section class="crowd-strip">
+      <div class="crowd-walkers" aria-hidden="true">
+        <div class="walker layer-back dir-right" style="--dur:20s;--delay:-2s"><svg class="figure" viewBox="0 0 20 40" xmlns="http://www.w3.org/2000/svg"><circle cx="10" cy="5" r="5"/><path d="M4 14h12l-2 11 4 13-3 1-4-11-1 0-4 11-3-1 4-13z"/></svg></div>
+        <div class="walker layer-back dir-left" style="--dur:23s;--delay:-9s"><svg class="figure" viewBox="0 0 20 40" xmlns="http://www.w3.org/2000/svg"><circle cx="10" cy="5" r="5"/><path d="M4 14h12l-2 11 4 13-3 1-4-11-1 0-4 11-3-1 4-13z"/></svg></div>
+        <div class="walker layer-back dir-right" style="--dur:18s;--delay:-14s"><svg class="figure" viewBox="0 0 20 40" xmlns="http://www.w3.org/2000/svg"><circle cx="10" cy="5" r="5"/><path d="M4 14h12l-2 11 4 13-3 1-4-11-1 0-4 11-3-1 4-13z"/></svg></div>
+        <div class="walker layer-back dir-left" style="--dur:21s;--delay:-5s"><svg class="figure" viewBox="0 0 20 40" xmlns="http://www.w3.org/2000/svg"><circle cx="10" cy="5" r="5"/><path d="M4 14h12l-2 11 4 13-3 1-4-11-1 0-4 11-3-1 4-13z"/></svg></div>
+        <div class="walker layer-front dir-right" style="--dur:13s;--delay:-1s"><svg class="figure" viewBox="0 0 20 40" xmlns="http://www.w3.org/2000/svg"><circle cx="10" cy="5" r="5"/><path d="M4 14h12l-2 11 4 13-3 1-4-11-1 0-4 11-3-1 4-13z"/></svg></div>
+        <div class="walker layer-front dir-left" style="--dur:15s;--delay:-7s"><svg class="figure" viewBox="0 0 20 40" xmlns="http://www.w3.org/2000/svg"><circle cx="10" cy="5" r="5"/><path d="M4 14h12l-2 11 4 13-3 1-4-11-1 0-4 11-3-1 4-13z"/></svg></div>
+        <div class="walker layer-front dir-right" style="--dur:17s;--delay:-11s"><svg class="figure" viewBox="0 0 20 40" xmlns="http://www.w3.org/2000/svg"><circle cx="10" cy="5" r="5"/><path d="M4 14h12l-2 11 4 13-3 1-4-11-1 0-4 11-3-1 4-13z"/></svg></div>
+        <div class="walker layer-front dir-left" style="--dur:12s;--delay:-4s"><svg class="figure" viewBox="0 0 20 40" xmlns="http://www.w3.org/2000/svg"><circle cx="10" cy="5" r="5"/><path d="M4 14h12l-2 11 4 13-3 1-4-11-1 0-4 11-3-1 4-13z"/></svg></div>
+        <div class="walker layer-front dir-right" style="--dur:16s;--delay:-16s"><svg class="figure" viewBox="0 0 20 40" xmlns="http://www.w3.org/2000/svg"><circle cx="10" cy="5" r="5"/><path d="M4 14h12l-2 11 4 13-3 1-4-11-1 0-4 11-3-1 4-13z"/></svg></div>
+        <div class="walker layer-front dir-left" style="--dur:14s;--delay:-9s"><svg class="figure" viewBox="0 0 20 40" xmlns="http://www.w3.org/2000/svg"><circle cx="10" cy="5" r="5"/><path d="M4 14h12l-2 11 4 13-3 1-4-11-1 0-4 11-3-1 4-13z"/></svg></div>
+      </div>
+      <div class="container-xl crowd-caption"><div class="crowd-badge"><p class="eyebrow mb-1">BUSY &amp; LOVED</p><h3 class="serif text-base sm:text-xl font-bold text-[#493326]">天天人潮絡繹不絕，排隊也要等這一口酥脆。</h3></div></div>
     </section>
     <!-- Brand story -->
     <section id="story" class="py-20 md:py-28"><div class="container-xl grid lg:grid-cols-2 gap-12 lg:gap-24 items-center"><div class="relative"><img src="https://images.unsplash.com/photo-1555126634-323283e090fa?auto=format&fit=crop&w=1100&q=85" alt="職人手作亞洲料理" class="w-full h-[360px] sm:h-[530px] object-cover rounded-[28px]" loading="lazy" /><div class="absolute -bottom-7 -right-2 sm:-right-7 rounded-2xl bg-[#ce713d] text-white px-7 py-6 shadow-xl"><span class="serif text-4xl font-bold">30<span class="text-lg">年</span></span><p class="text-xs mt-1">一心做好鍋貼</p></div></div><div class="pt-6"><p class="eyebrow mb-5">OUR STORY / 品牌故事</p><h2 class="section-heading">用時間淬鍊手藝，<br />用真材實料留住味道。</h2><p class="text-[#76685d] leading-8 mt-7">一顆好吃的鍋貼，從來沒有捷徑。我們挑選台灣在地豬肉、搭配鮮甜蔬菜，堅持每日手工包製，讓金黃焦香的脆皮與飽滿多汁的內餡，在入口的瞬間恰好相遇。</p><div class="grid sm:grid-cols-3 gap-4 mt-9"><div class="border-t border-[#dbccbd] pt-5"><i data-lucide="leaf" class="w-6 h-6 text-[#ce713d] mb-3"></i><strong class="block text-sm">台灣在地食材</strong><span class="text-xs text-[#817367] leading-6">安心選材，滋味純粹</span></div><div class="border-t border-[#dbccbd] pt-5"><i data-lucide="hand" class="w-6 h-6 text-[#ce713d] mb-3"></i><strong class="block text-sm">每日新鮮現包</strong><span class="text-xs text-[#817367] leading-6">保留餡料的鮮甜口感</span></div><div class="border-t border-[#dbccbd] pt-5"><i data-lucide="flame" class="w-6 h-6 text-[#ce713d] mb-3"></i><strong class="block text-sm">黃金煎脆比例</strong><span class="text-xs text-[#817367] leading-6">底酥皮Q，層次分明</span></div></div></div></div>
